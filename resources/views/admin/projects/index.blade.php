@@ -10,7 +10,7 @@
         <div class="d-flex justify-content-end mb-3"><a href="{{ route('admin.projects.create') }}"
                 class="btn btn-success ">Aggiungi Progetto</a>
         </div>
-        <table class="table table-dark table-striped">
+        <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -35,7 +35,8 @@
                                     class="btn btn-primary btn-sm">Info</a>
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="btn btn-warning btn-sm">Modifica</a>
-                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
+                                    class="delete-form"data-title="{{ $project->title }}">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn btn-danger btn-sm">Elimina</button>
@@ -49,4 +50,8 @@
             </tbody>
         </table>
     </div>
+@endsection
+
+@section('scripts')
+    @vite('resources\js\delete-form.js')
 @endsection
