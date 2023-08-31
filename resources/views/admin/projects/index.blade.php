@@ -26,7 +26,7 @@
                     <tr>
                         <th scope="row" class="align-middle">{{ $project->id }}</th>
                         <td class="align-middle">{{ $project->title }}</td>
-                        <td class="align-middle">{{ $project->url }}</td>
+                        <td class="align-middle"><a href="{{ $project->url }}">Apri in GitHub</a></td>
                         <td class="align-middle">{{ $project->created_at }}</td>
                         <td class="align-middle">{{ $project->updated_at }}</td>
                         <td>
