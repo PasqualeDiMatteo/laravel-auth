@@ -48,7 +48,11 @@
                     <h3>Non ci sono progetti</h3>
                 @endforelse
             </tbody>
+
         </table>
+        @if ($projects->hasPages())
+            {{ $projects->links() }}
+        @endif
     </div>
 @endsection
 
