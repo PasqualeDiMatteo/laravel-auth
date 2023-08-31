@@ -53,7 +53,7 @@ class ProjectController extends Controller
         $new_project->image = $request->image;
         $new_project->description = $request->description;
         $new_project->save();
-        return to_route("admin.projects.index");
+        return to_route("admin.projects.index")->with('type', 'create')->with('message', 'Progetto creato con successo')->with('alert', 'success');
     }
 
     /**
@@ -98,7 +98,7 @@ class ProjectController extends Controller
         $project->url = $request->url;
         $project->description = $request->description;
         $project->save();
-        return to_route('admin.projects.index');
+        return to_route('admin.projects.index')->with('type', 'update')->with('message', 'Progetto cancellato con successo')->with('alert', 'success');
     }
 
     /**
@@ -108,6 +108,6 @@ class ProjectController extends Controller
     {
         //
         $project->delete();
-        return to_route("admin.projects.index");
+        return to_route("admin.projects.index")->with('type', 'delete')->with('message', 'Progetto cancellato con successo')->with('alert', 'success');
     }
 }

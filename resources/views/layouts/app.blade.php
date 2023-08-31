@@ -102,8 +102,13 @@
             </div>
         </nav>
 
+        {{-- Allert --}}
+        <div class="container">
+            @include('includes.allert')
+        </div>
         {{-- Main --}}
         <main class="">
+
             @yield('content')
         </main>
 
