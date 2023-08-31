@@ -31,6 +31,8 @@
                         <td class="align-middle">{{ $project->updated_at }}</td>
                         <td>
                             <div class="d-flex justify-content-end gap-2 ">
+                                <a href="{{ route('admin.projects.show', $project) }}"
+                                    class="btn btn-primary btn-sm">Info</a>
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="btn btn-warning btn-sm">Modifica</a>
                                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
