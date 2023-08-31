@@ -56,6 +56,7 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         //
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -64,6 +65,12 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         //
+        $project->title = $request->title;
+        $project->image = $request->image;
+        $project->url = $request->url;
+        $project->description = $request->description;
+        $project->save();
+        return to_route('admin.projects.index');
     }
 
     /**
