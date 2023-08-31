@@ -51,10 +51,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link @if (Route::is('guest.index')) active @endif"
+                                href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link @if (Route::is('admin.projects*')) active @endif"
+                                    href="{{ route('admin.projects.index') }}">Projects</a>
+                            </li>
+                        @endauth
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -68,7 +74,8 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item
+                                dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
