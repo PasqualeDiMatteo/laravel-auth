@@ -12,25 +12,41 @@
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="title" class="form-label">Titolo</label>
-                        <input type="text" class="form-control" id="title" name="title">
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="title"
+                            name="title">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('title') }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="mb-3">
                         <label for="image" class="form-label">Immagine</label>
-                        <input type="text" class="form-control" id="url" name="image">
+                        <input type="text" class="form-control @error('image') is-invalid @enderror" id="url"
+                            name="image">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('image') }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="mb-3">
                         <label for="url" class="form-label">Link Progetto</label>
-                        <input type="url" class="form-control" id="url" name="url">
+                        <input type="url" class="form-control @error('url') is-invalid @enderror" id="url"
+                            name="url">
+                        <div class="invalid-feedback">
+                            {{ $errors->first('url') }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Descrizione" id="description" name="description"></textarea>
+                        <textarea class="form-control @error('description') is-invalid @enderror" placeholder="Descrizione" id="description"
+                            name="description"></textarea>
                         <label for="description">Descrizione</label>
+                        <div class="invalid-feedback">
+                            {{ $errors->first('description') }}
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 d-flex justify-content-end mt-3">

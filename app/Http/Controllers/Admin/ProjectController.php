@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
 {
@@ -33,6 +34,19 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'title' => 'required|unique:projects|string',
+            'url' => 'required|unique:projects|url:http,https',
+            'image' => 'string|nullable',
+            'description' => 'string|nullable',
+        ], [
+            "title.required" => "Il titolo è mancante",
+            "title.unique" => "Il titolo esiste già",
+            "url.required" => "Il link è mancante",
+            "url.unique" => "Il link esiste già",
+            "url.url" => "Il link è sbagliato",
+        ]);
+
         $new_project = new Project();
         $new_project->title = $request->title;
         $new_project->url = $request->url;
@@ -66,6 +80,19 @@ class ProjectController extends Controller
     public function update(Request $request, Project $project)
     {
         //
+        $request->validate([
+            'title' => ["required", "string", Rule::unique("projects")->ignore($project->id)],
+            'url' =>  ["required", "url:http,https", Rule::unique("projects")->ignore($project->id)],
+            'image' => 'string|nullable',
+            'description' => 'string|nullable',
+        ], [
+            "title.required" => "Il titolo è mancante",
+            "title.unique" => "Il titolo esiste già",
+            "url.required" => "Il link è mancante",
+            "url.unique" => "Il link esiste già",
+            "url.url" => "Il link è sbagliato",
+        ]);
+
         $project->title = $request->title;
         $project->image = $request->image;
         $project->url = $request->url;
