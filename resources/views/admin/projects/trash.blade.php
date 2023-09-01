@@ -5,16 +5,14 @@
 @section('content')
     <h1 class="text-center">Cestino</h1>
     <div class="container">
-        @empty($projects)
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Titolo</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-            @endempty
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titolo</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
             <tbody>
                 @forelse ($projects as $project)
                     <tr>
@@ -40,13 +38,10 @@
                 @endforelse
             </tbody>
         </table>
-    @empty($projects)
         <form action="{{ route('admin.projects.dropAll') }}"method="POST">
             @csrf
             @method('DELETE')
             <button class="btn btn-danger">Cancella tutto</button>
         </form>
-    @endempty
-
-</div>
+    </div>
 @endsection
