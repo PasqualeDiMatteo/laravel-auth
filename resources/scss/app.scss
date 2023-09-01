@@ -1,1 +1,13 @@
-@import '~bootstrap/scss/bootstrap'
+@use "../scss/header";
+@use "../scss/main-guest";
+
+@import '~bootstrap/scss/bootstrap';
+
+body{
+    width: 100vw;
+    height: 100vh;
+}
+
+main{
+    width: 100%;
+}
