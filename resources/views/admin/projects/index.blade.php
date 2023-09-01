@@ -43,12 +43,13 @@
                             </div>
                         </td>
                     </tr>
+
                 @empty
                     <h3>Non ci sono progetti</h3>
                 @endforelse
             </tbody>
-
         </table>
+        <a href="{{ route('admin.projects.trash') }}">Cestino</a>
         @if ($projects->hasPages())
             {{ $projects->links() }}
         @endif

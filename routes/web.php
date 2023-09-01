@@ -21,6 +21,11 @@ Route::get('/', [HomeController::class, "index"])->name("guest.index");
 
 // Route Admin
 Route::prefix("/admin")->middleware(["auth"])->name("admin.")->group(function () {
+
+    Route::get("/projects/trash", [ProjectController::class, "trash"])->name("projects.trash");
+    Route::patch("/projects/{project}/restore", [ProjectController::class, "restore"])->name("projects.restore");
+    Route::delete("/projects/drop-all", [ProjectController::class, "dropAll"])->name("projects.dropAll");
+    Route::delete("/projects/{project}/drop", [ProjectController::class, "drop"])->name("projects.drop");
     Route::resource("projects", ProjectController::class);
 });
 
