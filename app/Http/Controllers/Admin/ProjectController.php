@@ -25,7 +25,8 @@ class ProjectController extends Controller
     public function create()
     {
         //
-        return view("admin.projects.create");
+        $project = new Project();
+        return view("admin.projects.create", compact("project"));
     }
 
     /**
@@ -98,7 +99,7 @@ class ProjectController extends Controller
         $project->url = $request->url;
         $project->description = $request->description;
         $project->save();
-        return to_route('admin.projects.index')->with('type', 'update')->with('message', 'Progetto cancellato con successo')->with('alert', 'success');
+        return to_route('admin.projects.index')->with('type', 'update')->with('message', 'Progetto modificato con successo')->with('alert', 'success');
     }
 
     /**
