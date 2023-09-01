@@ -35,12 +35,11 @@
                                     class="btn btn-primary btn-sm">Info</a>
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="btn btn-warning btn-sm">Modifica</a>
-                                <form action="{{ route('admin.projects.destroy', $project) }}" method="POST"
-                                    class="delete-form"data-title="{{ $project->title }}">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger btn-sm">Elimina</button>
-                                </form>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                    data-bs-target="#{{ $project->id }}">
+                                    Elimina
+                                </button>
+                                @include('includes.projects.modal-delete')
                             </div>
                         </td>
                     </tr>
@@ -54,8 +53,4 @@
             {{ $projects->links() }}
         @endif
     </div>
-@endsection
-
-@section('scripts')
-    @vite('resources\js\delete-form.js')
 @endsection
