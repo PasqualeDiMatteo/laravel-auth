@@ -35,7 +35,7 @@
                                     class="btn btn-primary btn-sm">Info</a>
                                 <a href="{{ route('admin.projects.edit', $project) }}"
                                     class="btn btn-warning btn-sm">Modifica</a>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                                <button type="button" class="btn btn-danger  btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#{{ $project->id }}">
                                     Elimina
                                 </button>
