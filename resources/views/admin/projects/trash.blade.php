@@ -38,6 +38,7 @@
                 @endforelse
             </tbody>
         </table>
+
         <form action="{{ route('admin.projects.dropAll') }}"method="POST">
             @csrf
             @method('DELETE')

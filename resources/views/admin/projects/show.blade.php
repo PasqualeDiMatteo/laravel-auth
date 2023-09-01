@@ -22,9 +22,15 @@
                                 <p class="card-text">Ultima modifica: <small
                                         class="text-body-secondary">{{ $project->updated_at }}</small>
                                 </p>
-                                <div class="d-flex justify-content-end">
+                                <div class="d-flex justify-content-end gap-2">
                                     <a href="{{ $project->url }}" class="btn btn-primary">Apri in GitHub</a>
+                                    <button type="button" class="btn btn-danger  btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#{{ $project->id }}">
+                                        Elimina
+                                    </button>
+                                    @include('includes.projects.modal-delete')
                                 </div>
+
                             </div>
                         </div>
                     </div>

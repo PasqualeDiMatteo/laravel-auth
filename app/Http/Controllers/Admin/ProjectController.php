@@ -124,7 +124,7 @@ class ProjectController extends Controller
     {
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->restore();
-        return to_route('admin.projects.trash')->with('alert', 'success')->with('message', 'Il progetto è stato ripristinato!');
+        return to_route('admin.projects.trash')->with('type', 'update')->with('alert', 'success')->with('message', 'Il progetto è stato ripristinato!');
     }
 
     // Drop
@@ -132,13 +132,13 @@ class ProjectController extends Controller
     {
         $project = Project::onlyTrashed()->findOrFail($id);
         $project->forceDelete();
-        return to_route('admin.projects.trash')->with('alert', 'success')->with('message', 'Il progetto è stato eliminato definitivamente!');
+        return to_route('admin.projects.trash')->with('type', 'delete')->with('alert', 'success')->with('message', 'Il progetto è stato eliminato definitivamente!');
     }
 
     //DropAll
     public function dropAll()
     {
         Project::onlyTrashed()->forceDelete();
-        return to_route('admin.projects.trash')->with('alert', 'success')->with('message', 'Il tuo cestino è stato svuotato correttamente!');
+        return to_route('admin.projects.trash')->with('type', 'delete')->with('alert', 'success')->with('message', 'Il tuo cestino è stato svuotato correttamente!');
     }
 }
