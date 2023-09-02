@@ -23,8 +23,10 @@
     }
     .col-6.bg-yellow{
         background-color: #FED43A;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         .card-logo{
-            padding-top: 350px;
             .logo{
                 width: 250px;
             }

@@ -22,7 +22,7 @@
             </div>
         </div>
         {{-- Right side --}}
-        <div class="col-6 bg-yellow">
+        <div class="col-6 h-100 bg-yellow">
             {{-- Card Logo --}}
             <div class="row card-logo text-center">
                 <div class="col-12">
