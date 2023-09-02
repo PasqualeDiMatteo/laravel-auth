@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="icon" href="{{ Vite::asset('resources/img/logo.png') }}" type="image/x-icon">
     <title>{{ config('app.name', 'Laravel') }} | @yield('title')</title>
 
 
@@ -16,16 +16,21 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     {{-- CDNS --}}
+
     @yield('cdns')
 
+    {{-- Style --}}
+    <style>
+        body {
+            display: none;
+        }
+    </style>
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
 </head>
 
 <body>
     <div id="app">
-
-
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">

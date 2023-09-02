@@ -1,7 +1,7 @@
-
 .header{
     height: 100%;
     display: flex;
+    
     .collapse{
         display: flex;
         flex-direction: column;
@@ -9,9 +9,12 @@
     nav{
         display: flex;
         flex-direction: column;
+        background-color: #FED43A;
     }
     img{
         width: 100px;
         border-radius: 50%;
+        background: #121212;
+        border: 1px solid white;
     }
 }
