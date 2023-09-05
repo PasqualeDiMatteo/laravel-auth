@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <div class="col-6">
+    <div class="col-5">
         <div class="mb-3">
             <label for="image" class="form-label">Immagine</label>
             <input type="file" class="form-control @error('image') is-invalid @enderror" id="image"
@@ -24,6 +24,12 @@
             <div class="invalid-feedback">
                 {{ $errors->first('image') }}
             </div>
+        </div>
+    </div>
+    <div class="col-1">
+        <div class="mb-3">
+            <img src="{{ old('image', asset('storage/' . $project->image) ?? 'https://marcolanci.it/utils/placeholder.jpg') }}"
+                alt="preview" class="img-fluid" id="preview">
         </div>
     </div>
     <div class="col-12">
