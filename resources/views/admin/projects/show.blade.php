@@ -10,7 +10,8 @@
                 <div class="card mb-3 py-2">
                     <div class="row g-0 justify-content-center">
                         <div class="col-3 text-center">
-                            <img src="{{ $project->image }}" class="img-fluid rounded-start" alt="{{ $project->title }}">
+                            <img src="{{ asset('/storage/' . $project->image) }}" class="img-fluid rounded-start"
+                                alt="{{ $project->title }}">
                         </div>
                         <div class="col-8 text-end">
                             <div class="card-body">

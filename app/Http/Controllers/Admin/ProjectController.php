@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class ProjectController extends Controller
@@ -38,7 +40,7 @@ class ProjectController extends Controller
         $request->validate([
             'title' => 'required|unique:projects|string',
             'url' => 'required|unique:projects|url:http,https',
-            'image' => 'string|nullable',
+            'image' => 'image|nullable',
             'description' => 'string|nullable',
         ], [
             "title.required" => "Il titolo è mancante",
@@ -46,12 +48,16 @@ class ProjectController extends Controller
             "url.required" => "Il link è mancante",
             "url.unique" => "Il link esiste già",
             "url.url" => "Il link è sbagliato",
+            "image.image" => "Il file non è un immagine"
         ]);
-
         $new_project = new Project();
+
+        if (Arr::exists($request, "image")) {
+            $img_path = Storage::putFile("project_image", $request->image);
+            $new_project->image = $img_path;
+        }
         $new_project->title = $request->title;
         $new_project->url = $request->url;
-        $new_project->image = $request->image;
         $new_project->description = $request->description;
         $new_project->save();
         return to_route("admin.projects.index")->with('type', 'create')->with('message', 'Progetto creato con successo')->with('alert', 'success');
@@ -84,7 +90,7 @@ class ProjectController extends Controller
         $request->validate([
             'title' => ["required", "string", Rule::unique("projects")->ignore($project->id)],
             'url' =>  ["required", "url:http,https", Rule::unique("projects")->ignore($project->id)],
-            'image' => 'string|nullable',
+            'image' => 'image|nullable',
             'description' => 'string|nullable',
         ], [
             "title.required" => "Il titolo è mancante",
@@ -92,10 +98,16 @@ class ProjectController extends Controller
             "url.required" => "Il link è mancante",
             "url.unique" => "Il link esiste già",
             "url.url" => "Il link è sbagliato",
+            "image.image" => "Il file non è un immagine"
         ]);
 
+        if (Arr::exists($request, "image")) {
+            if ($project->image) Storage::delete($project->image);
+            $img_path = Storage::putFile("project_image", $request->image);
+            $project->image = $img_path;
+        }
+
         $project->title = $request->title;
-        $project->image = $request->image;
         $project->url = $request->url;
         $project->description = $request->description;
         $project->save();
