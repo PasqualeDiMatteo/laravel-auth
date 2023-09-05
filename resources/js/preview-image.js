@@ -10,7 +10,7 @@ inputImage.addEventListener("input", () => {
         url = URL.createObjectURL(file);
         imagePreview.src = url;
     } else {
-        imagePreview.scr = placeholder;
+        imagePreview.src = placeholder;
     }
 });
 
