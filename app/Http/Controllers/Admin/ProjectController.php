@@ -143,6 +143,7 @@ class ProjectController extends Controller
     public function drop(String $id)
     {
         $project = Project::onlyTrashed()->findOrFail($id);
+        if ($project->image) Storage::delete($project->image);
         $project->forceDelete();
         return to_route('admin.projects.trash')->with('type', 'delete')->with('alert', 'success')->with('message', 'Il progetto è stato eliminato definitivamente!');
     }

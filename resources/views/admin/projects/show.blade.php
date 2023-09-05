@@ -9,11 +9,13 @@
             <div class="col-8">
                 <div class="card mb-3 py-2">
                     <div class="row g-0 justify-content-center">
-                        <div class="col-3 text-center">
-                            <img src="{{ asset('/storage/' . $project->image) }}" class="img-fluid rounded-start"
-                                alt="{{ $project->title }}">
-                        </div>
-                        <div class="col-8 text-end">
+                        @if ($project->image)
+                            <div class="col-3 text-center">
+                                <img src="{{ asset('storage/' . $project->image) }}" class="img-fluid rounded-start"
+                                    alt="{{ $project->title }}">
+                            </div>
+                        @endif
+                        <div class="@if ($project->image) col-8 text-end @else col-10 @endif">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $project->title }}</h5>
                                 <p class="card-text">{{ $project->description }}</p>
