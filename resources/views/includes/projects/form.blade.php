@@ -28,7 +28,7 @@
     </div>
     <div class="col-1">
         <div class="mb-3">
-            <img src="{{ old('image', asset('storage/' . $project->image) ?? 'https://marcolanci.it/utils/placeholder.jpg') }}"
+            <img src="{{ $project->image ? asset('storage/' . $project->image) : 'https://marcolanci.it/utils/placeholder.jpg' }}"
                 alt="preview" class="img-fluid" id="preview">
         </div>
     </div>
